@@ -99,7 +99,7 @@ const AdminPage: React.FC = () => {
     const TabButton: React.FC<{ title: string; tabName: string; }> = ({ title, tabName }) => (
          <button
             onClick={() => setActiveTab(tabName)}
-            className={`px-4 py-2 text-sm font-medium rounded-md ${activeTab === tabName ? 'bg-indigo-100 text-indigo-700' : 'text-gray-500 hover:text-gray-700'}`}
+            className={`px-3 py-2 text-sm font-medium rounded-md whitespace-nowrap ${activeTab === tabName ? 'bg-indigo-100 text-indigo-700' : 'text-gray-500 hover:text-gray-700'}`}
         >
             {title}
         </button>
@@ -111,7 +111,7 @@ const AdminPage: React.FC = () => {
 
             {/* Tabs */}
             <div className="border-b border-gray-200">
-                <nav className="-mb-px flex space-x-6" aria-label="Tabs">
+                <nav className="-mb-px flex space-x-2 sm:space-x-6 overflow-x-auto" aria-label="Tabs">
                     <TabButton title="Dashboard" tabName="dashboard" />
                     <TabButton title="Products" tabName="products" />
                     <TabButton title="Vendors" tabName="vendors" />
@@ -135,11 +135,11 @@ const AdminPage: React.FC = () => {
             {/* Products Section */}
             {activeTab === 'products' && (
                 <section>
-                    <div className="sm:flex sm:justify-between sm:items-center mb-6">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 gap-4">
                         <h2 className="text-2xl font-bold text-gray-800">Products</h2>
-                        <div className="mt-4 sm:mt-0 sm:flex sm:space-x-4">
+                        <div className="flex flex-col sm:flex-row sm:space-x-4 gap-2">
                              <input type="text" placeholder="Search products..." value={productSearch} onChange={e => setProductSearch(e.target.value)} className="block w-full sm:w-64 border-gray-300 rounded-md shadow-sm" />
-                            <Link to="/admin/product/new" className="mt-2 sm:mt-0 w-full sm:w-auto inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700">
+                            <Link to="/admin/product/new" className="w-full sm:w-auto inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700">
                                 Add New Product
                             </Link>
                         </div>
@@ -177,11 +177,11 @@ const AdminPage: React.FC = () => {
             {/* Vendors Section */}
             {activeTab === 'vendors' && (
                 <section>
-                    <div className="sm:flex sm:justify-between sm:items-center mb-6">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 gap-4">
                         <h2 className="text-2xl font-bold text-gray-800">Vendors</h2>
-                        <div className="mt-4 sm:mt-0 sm:flex sm:space-x-4">
+                        <div className="flex flex-col sm:flex-row sm:space-x-4 gap-2">
                             <input type="text" placeholder="Search vendors..." value={vendorSearch} onChange={e => setVendorSearch(e.target.value)} className="block w-full sm:w-64 border-gray-300 rounded-md shadow-sm" />
-                            <Link to="/admin/vendor/new" className="mt-2 sm:mt-0 w-full sm:w-auto inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700">
+                            <Link to="/admin/vendor/new" className="w-full sm:w-auto inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700">
                                 Add New Vendor
                             </Link>
                         </div>

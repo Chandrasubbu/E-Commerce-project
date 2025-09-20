@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { getProducts, getVendors } from '../services/marketplaceApi';
 import type { Product, Vendor } from '../types';
@@ -40,7 +39,7 @@ const HomePage: React.FC = () => {
             {/* Featured Products */}
             <section>
                 <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 mb-6">Featured Products</h2>
-                <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+                <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:gap-x-8">
                     {products.slice(0, 8).map((product) => (
                         <ProductCard key={product.id} product={product} />
                     ))}
@@ -50,7 +49,7 @@ const HomePage: React.FC = () => {
             {/* Top Vendors */}
             <section>
                 <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 mb-6">Top Vendors</h2>
-                <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:gap-x-8">
                     {vendors.map((vendor) => (
                         <VendorCard key={vendor.id} vendor={vendor} />
                     ))}

@@ -7,9 +7,9 @@ const CartItemRow: React.FC<{ item: CartItem }> = ({ item }) => {
     const { updateQuantity, removeFromCart } = useCart();
     
     return (
-        <li className="flex py-6 sm:py-10">
+        <li className="flex py-6">
             <div className="flex-shrink-0">
-                <img src={item.product.imageUrl} alt={item.product.name} className="w-24 h-24 rounded-md object-cover object-center sm:w-48 sm:h-48" />
+                <img src={item.product.imageUrl} alt={item.product.name} className="w-24 h-24 rounded-md object-cover object-center sm:w-32 sm:h-32" />
             </div>
 
             <div className="ml-4 flex-1 flex flex-col justify-between sm:ml-6">

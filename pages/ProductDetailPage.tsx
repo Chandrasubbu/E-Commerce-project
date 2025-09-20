@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getProductById, getVendorById } from '../services/marketplaceApi';
@@ -57,15 +56,21 @@ const ProductDetailPage: React.FC = () => {
                 {/* Image gallery */}
                 <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
                     <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-                        <div className="aspect-w-4 aspect-h-3 hidden overflow-hidden rounded-lg lg:block">
+                        <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg">
                             <img src={mainImage} alt={product.name} className="h-full w-full object-cover object-center" />
                         </div>
-                        <div className="mt-4 flex space-x-4">
-                            {[product.imageUrl, ...product.gallery].map((img, idx) => (
-                                <button key={idx} onClick={() => setMainImage(img)} className={`w-24 h-24 rounded-md overflow-hidden border-2 ${mainImage === img ? 'border-indigo-500' : 'border-transparent'}`}>
-                                    <img src={img} alt={`${product.name} thumbnail ${idx}`} className="h-full w-full object-cover object-center" />
-                                </button>
-                            ))}
+                        <div className="mt-4">
+                           <div className="flex space-x-4 overflow-x-auto pb-2">
+                                {[product.imageUrl, ...product.gallery].map((img, idx) => (
+                                    <button 
+                                        key={idx} 
+                                        onClick={() => setMainImage(img)} 
+                                        className={`flex-shrink-0 w-24 h-24 rounded-md overflow-hidden border-2 ${mainImage === img ? 'border-indigo-500' : 'border-transparent'}`}
+                                    >
+                                        <img src={img} alt={`${product.name} thumbnail ${idx}`} className="h-full w-full object-cover object-center" />
+                                    </button>
+                                ))}
+                           </div>
                         </div>
                     </div>
                     {/* Product info */}

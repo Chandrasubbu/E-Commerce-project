@@ -46,7 +46,7 @@ const Header: React.FC = () => {
                     {/* Logo */}
                     <div className="flex-shrink-0">
                         <Link to="/" className="flex items-center space-x-2">
-                            <svg className="h-8 w-8 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg className="h-8 w-8 text-indigo-600" xmlns="http://www.w.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                             </svg>
                             <span className="text-2xl font-bold text-gray-800">Marketplace</span>
@@ -118,43 +118,46 @@ const Header: React.FC = () => {
             </div>
 
             {/* Mobile Menu */}
-            {mobileMenuOpen && (
-                <div className="lg:hidden" role="dialog" aria-modal="true">
-                    <div className="fixed inset-0 z-50"></div>
-                    <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-                        <div className="flex items-center justify-between">
-                             <Link to="/" onClick={closeMobileMenu} className="-m-1.5 p-1.5 flex items-center space-x-2">
-                                <svg className="h-8 w-8 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
-                                <span className="text-2xl font-bold text-gray-800">Marketplace</span>
-                            </Link>
-                            <button type="button" className="-m-2.5 rounded-md p-2.5 text-gray-700" onClick={closeMobileMenu}>
-                                <span className="sr-only">Close menu</span>
-                                <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
-                            </button>
-                        </div>
-                        <div className="mt-6 flow-root">
-                            <div className="-my-6 divide-y divide-gray-500/10">
-                                <div className="space-y-2 py-6">
-                                    <form onSubmit={handleSearchSubmit} className="mb-4">
-                                        <input type="search" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="block w-full bg-gray-100 border border-gray-200 rounded-full py-2 px-4 text-sm" placeholder="Search for products..."/>
-                                    </form>
-                                    <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Categories</h3>
-                                    {categories.map(category => (
-                                        <Link key={category} to={`/search?category=${encodeURIComponent(category)}`} onClick={closeMobileMenu} className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">{category}</Link>
-                                    ))}
-                                     <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider pt-4">Vendors</h3>
-                                     {vendors.map(vendor => (
-                                        <Link key={vendor.id} to={`/vendor/${vendor.id}`} onClick={closeMobileMenu} className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">{vendor.name}</Link>
-                                    ))}
-                                </div>
-                                <div className="py-6">
-                                    <Link to="/admin" onClick={closeMobileMenu} className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Admin</Link>
-                                </div>
+            <div className={`lg:hidden ${mobileMenuOpen ? 'block' : 'hidden'}`} role="dialog" aria-modal="true">
+                {/* Backdrop */}
+                <div 
+                    className={`fixed inset-0 z-50 bg-black bg-opacity-25 transition-opacity ${mobileMenuOpen ? 'opacity-100' : 'opacity-0'}`} 
+                    onClick={closeMobileMenu}
+                ></div>
+                {/* Panel */}
+                <div className={`fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 transform transition-transform duration-300 ease-in-out ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+                    <div className="flex items-center justify-between">
+                         <Link to="/" onClick={closeMobileMenu} className="-m-1.5 p-1.5 flex items-center space-x-2">
+                            <svg className="h-8 w-8 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
+                            <span className="text-2xl font-bold text-gray-800">Marketplace</span>
+                        </Link>
+                        <button type="button" className="-m-2.5 rounded-md p-2.5 text-gray-700" onClick={closeMobileMenu}>
+                            <span className="sr-only">Close menu</span>
+                            <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                        </button>
+                    </div>
+                    <div className="mt-6 flow-root">
+                        <div className="-my-6 divide-y divide-gray-500/10">
+                            <div className="space-y-2 py-6">
+                                <form onSubmit={handleSearchSubmit} className="mb-4">
+                                    <input type="search" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="block w-full bg-gray-100 border border-gray-200 rounded-full py-2 px-4 text-sm" placeholder="Search for products..."/>
+                                </form>
+                                <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Categories</h3>
+                                {categories.map(category => (
+                                    <Link key={category} to={`/search?category=${encodeURIComponent(category)}`} onClick={closeMobileMenu} className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">{category}</Link>
+                                ))}
+                                 <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider pt-4">Vendors</h3>
+                                 {vendors.map(vendor => (
+                                    <Link key={vendor.id} to={`/vendor/${vendor.id}`} onClick={closeMobileMenu} className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">{vendor.name}</Link>
+                                ))}
+                            </div>
+                            <div className="py-6">
+                                <Link to="/admin" onClick={closeMobileMenu} className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Admin</Link>
                             </div>
                         </div>
                     </div>
                 </div>
-            )}
+            </div>
         </header>
     );
 };

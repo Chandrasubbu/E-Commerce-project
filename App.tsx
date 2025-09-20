@@ -29,9 +29,9 @@ const AppContent: React.FC = () => {
                              <img src="https://picsum.photos/1920/1080?grayscale&blur=2" alt="Hero background" className="w-full h-full object-center object-cover"/>
                         </div>
                         <div aria-hidden="true" className="absolute inset-0 bg-gray-900 opacity-60"></div>
-                        <div className="relative max-w-3xl mx-auto py-32 px-6 flex flex-col items-center text-center sm:py-48 lg:px-8">
-                             <h1 className="text-4xl font-extrabold tracking-tight text-white lg:text-6xl">Find Your Next Treasure</h1>
-                             <p className="mt-4 text-xl text-white">Discover unique products from the best independent vendors around the world.</p>
+                        <div className="relative max-w-3xl mx-auto py-24 px-6 flex flex-col items-center text-center sm:py-32 lg:px-8">
+                             <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">Find Your Next Treasure</h1>
+                             <p className="mt-4 text-lg sm:text-xl text-white">Discover unique products from the best independent vendors around the world.</p>
                         </div>
                     </div>
                 )}
