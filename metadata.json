@@ -1,0 +1,5 @@
+{
+  "name": "Marketplace Nexus",
+  "description": "A modern, multi-vendor e-commerce marketplace where users can browse, search, and purchase products from a variety of sellers. Features include vendor pages, a persistent shopping cart, and a clean, responsive user interface.",
+  "requestFramePermissions": []
+}
